@@ -15,6 +15,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Validate channels.json
+        run: |
+          python - << 'PY'
+          import json
+          with open('channels.json', 'r', encoding='utf-8') as f:
+              json.load(f)
+          print('channels.json is valid JSON')
+          PY
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
