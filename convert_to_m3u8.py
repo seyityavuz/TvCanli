@@ -20,11 +20,11 @@ def resolve_live_watch_url(channel_ref: str) -> str:
     return f"https://www.youtube.com/@{url}/live"
 
 
-def resolve_hls_url(source_url: str) -> str:
+def resolve_hls_url(source_url: str) -> str | None:
     session = Streamlink()
     streams = session.streams(source_url)
     if not streams:
-        raise RuntimeError("Bu URL için akış bulunamadı")
+        return None
 
     stream = streams.get("best") or next(iter(streams.values()))
 
@@ -35,7 +35,7 @@ def resolve_hls_url(source_url: str) -> str:
             hls_url = to_url()
 
     if not hls_url:
-        raise RuntimeError("HLS (m3u8) URL’si çıkarılamadı")
+        return None
 
     return hls_url
 
@@ -57,6 +57,7 @@ def main():
     group.add_argument("--url", help="Kaynak URL (örn. YouTube video/watch)")
     group.add_argument("--channel", help="Kanal handle veya URL (örn. @cnnturk veya https://youtube.com/@cnnturk)")
     parser.add_argument("--output", default="playlist.m3u8", help="Çıkış dosyası (varsayılan: playlist.m3u8)")
+    parser.add_argument("--fail-on-empty", action="store_true", help="Canlı bulunamazsa hata ver (varsayılan: hata verme)")
     args = parser.parse_args()
 
     source = args.url
@@ -64,6 +65,12 @@ def main():
         source = resolve_live_watch_url(args.channel)
 
     hls_url = resolve_hls_url(source)
+    if not hls_url:
+        if args.fail_on_empty:
+            raise RuntimeError("Bu URL için akış bulunamadı")
+        else:
+            print("Canlı yayın bulunamadı; mevcut playlist korunuyor.")
+            return
     write_playlist(Path(args.output), args.name, hls_url)
     print(f"Playlist yazıldı: {args.output}")
 

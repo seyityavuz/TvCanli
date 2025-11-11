@@ -21,6 +21,13 @@ Not: Windows PowerShell kullanıyorsanız `@` işareti özel anlam taşıyabilir
 py convert_to_m3u8.py --name CNNTurk --channel '@cnnturk' --output playlist.m3u8
 ```
 
+### Canlı yayın yoksa davranış
+- Varsayılan olarak komut, canlı yayın bulunamazsa hata vermez ve mevcut `playlist.m3u8` dosyasını olduğu gibi bırakır.
+- Hata vermek isterseniz: `--fail-on-empty` ekleyin.
+```
+py convert_to_m3u8.py --name CNNTurk --channel '@cnnturk' --output playlist.m3u8 --fail-on-empty
+```
+
 ## Otomatik Yenileme
 - `.github/workflows/refresh.yml` her `6` saatte bir çalışır ve `playlist.m3u8` dosyasını güncelleyip push eder.
 
