@@ -25,9 +25,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Generate playlist via Streamlink
+      - name: Generate playlist via Streamlink (channel live)
         run: |
-          python convert_to_m3u8.py --name CNNTurk --url https://youtu.be/Wq6Q7Z7wfpQ --output playlist.m3u8
+          python convert_to_m3u8.py --name CNNTurk --channel @cnnturk --output playlist.m3u8
 
       - name: Commit and push changes
         run: |
