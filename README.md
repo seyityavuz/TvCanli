@@ -16,6 +16,11 @@ py convert_to_m3u8.py --name CNNTurk --url https://youtu.be/Wq6Q7Z7wfpQ --output
 py convert_to_m3u8.py --name CNNTurk --channel @cnnturk --output playlist.m3u8
 ```
 
+Not: Windows PowerShell kullanıyorsanız `@` işareti özel anlam taşıyabilir; kanal handle’ını tırnak içinde verin:
+```
+py convert_to_m3u8.py --name CNNTurk --channel '@cnnturk' --output playlist.m3u8
+```
+
 ## Otomatik Yenileme
 - `.github/workflows/refresh.yml` her `6` saatte bir çalışır ve `playlist.m3u8` dosyasını güncelleyip push eder.
 
