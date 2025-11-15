@@ -6,6 +6,26 @@ import json
 import traceback
 from pathlib import Path
 
+def info_to_text(stream_info, url):
+    text = '#EXT-X-STREAM-INF:'
+    if stream_info.program_id:
+        text = text + 'PROGRAM-ID=' + str(stream_info.program_id) + ','
+    if stream_info.bandwidth:
+        text = text + 'BANDWIDTH=' + str(stream_info.bandwidth) + ','
+    if stream_info.codecs:
+        text = text + 'CODECS="'
+        codecs = stream_info.codecs
+        for i in range(0, len(codecs)):
+            text = text + codecs[i]
+            if len(codecs) - 1 != i:
+                text = text + ','
+        text = text + '",'
+    if stream_info.resolution.width:
+        text = text + 'RESOLUTION=' + str(stream_info.resolution.width) + 'x' + str(stream_info.resolution.height) 
+
+    text = text + "\n" + url + "\n"
+    return text
+
 def fetch_stream_url(url, slug):
     """Embed sayfasını çekip regex ile stream URL çıkarır."""
     headers = {
