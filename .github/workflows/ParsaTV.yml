@@ -23,8 +23,7 @@ jobs:
           pip install requests
 
       - name: Generate playlist
-        run: |
-          python scripts/parsatv.py
+        run: python parsatv.py
 
       - name: Commit and push changes
         run: |
