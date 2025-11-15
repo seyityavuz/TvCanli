@@ -45,7 +45,7 @@ def fetch_stream_url(channel):
         print(f"[ERROR] {channel['name']} için hata: {e}")
         return url
 
-def generate_m3u(channels, output_file="parsatv.m3u"):
+def generate_m3u(channels, output_file="parsatv.m3u8"):
     """Kanalları M3U playlist dosyasına yazar."""
     lines = ["#EXTM3U"]
     for ch in channels:
