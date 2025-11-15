@@ -32,3 +32,5 @@ jobs:
           git add parsatv.m3u
           git commit -m "Update ParsaTV playlist" || echo "No changes to commit"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
