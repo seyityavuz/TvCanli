@@ -6,15 +6,18 @@
   },
   "channels": [
     {
+      "name": "star-tv",
       "slug": "star-tv",
       "url": "https://www.parsatv.com/embed.php?name=Star-TV"
     },
     {
+      "name": "show-tv",
       "slug": "show-tv",
       "url": "https://www.parsatv.com/embed.php?name=Show-TV"
     },
     {
-      "slug": "kanal-d",
+      "name": "show-max",
+      "slug": "show-max",
       "url": "https://www.parsatv.com/embed.php?name=Show-Max"
     }
   ]
