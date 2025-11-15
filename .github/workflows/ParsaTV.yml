@@ -1,4 +1,4 @@
-name: ParsaTV Playlist
+name: channel Playlist
 
 on:
   schedule:
@@ -24,12 +24,12 @@ jobs:
         run: pip install requests
 
       - name: Generate playlist
-        run: python star.py
+        run: python channel.py
 
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add Star-TV.m3u8
-          git commit -m "Update ParsaTV playlist" || echo "No changes to commit"
+          git add channel.m3u8
+          git commit -m "Update channel playlist" || echo "No changes to commit"
           git push
