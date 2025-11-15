@@ -20,9 +20,9 @@ config = {
     },
     "channels": [
         {
-            "name": "ZDF",
+            "name": "Star-TV",
             "variables": [
-                {"name": "CHANNEL_NAME", "value": "ZDF"}
+                {"name": "CHANNEL_NAME", "value": "Star-TV"}
             ]
         }
     ]
