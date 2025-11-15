@@ -24,7 +24,7 @@ jobs:
         run: pip install requests
 
       - name: Generate playlist
-        run: python parsatv.py
+        run: python star.py
 
       - name: Commit and push changes
         run: |
