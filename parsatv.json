@@ -1,0 +1,24 @@
+{
+  "name": "ParsaTV",
+  "slug": "parsatv",
+  "url": "https://www.parsatv.com/embed.php?name=CHANNEL_NAME",
+  "method": "GET",
+  "pattern": "file:\\s\"'[\"']",
+  "expire_duration": "2H",
+  "mode": "variant",
+  "output_filter": "token",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10157) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+  },
+  "channels": [
+    {
+      "name": "ZDF",
+      "variables": [
+        {
+          "name": "CHANNEL_NAME",
+          "value": "ZDF"
+        }
+      ]
+    }
+  ]
+}
